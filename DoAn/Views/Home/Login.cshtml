@@ -1,0 +1,76 @@
+﻿@model DoAn.Models.User
+
+<div class="banner-top">
+    <div class="container">
+        <h1>Login</h1>
+        <em></em>
+        <h2><a href="index.html">Home</a><label>/</label>Login</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="login">
+
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            <div class="col-md-6 login-do">
+
+                @Html.AntiForgeryToken()
+                <div class="login-mail">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </div>
+                <div class="login-mail">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                <a class="news-letter " href="#">
+                    <label class="checkbox1"><input type="checkbox" name="checkbox"><i> </i>Forget Password</label>
+                </a>
+                <label class="hvr-skew-backward">
+                    <input type="submit" value="login">
+                </label>
+
+
+            </div>
+            <div class="col-md-6 login-right">
+                <h3>Completely Free Account</h3>
+
+                <p>
+                    Pellentesque neque leo, dictum sit amet accumsan non, dignissim ac mauris. Mauris rhoncus, lectus tincidunt tempus aliquam, odio
+                    libero tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum. Praesent porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac lobortis hendrerit, ex elit vestibulum est, at faucibus erat ligula non neque.
+                </p>
+                <a href="@Url.Action("Index", "Register")" class=" hvr-skew-backward">Register</a>
+
+            </div>
+
+            <div class="clearfix"> </div>
+        }
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="brand">
+        <div class="col-md-3 brand-grid">
+            <img src="~/Content/images/ic.png" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-3 brand-grid">
+            <img src="~/Content/images/ic1.png" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-3 brand-grid">
+            <img src="~/Content/images/ic2.png" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-3 brand-grid">
+            <img src="~/Content/images/ic3.png" class="img-responsive" alt="">
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+
+
+

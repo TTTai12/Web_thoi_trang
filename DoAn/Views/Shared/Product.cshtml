@@ -1,0 +1,44 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<DoAn.Models.Product>
+<div class="col-md-9">
+    <div class="mid-popular">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 item-grid1 simpleCart_shelfItem">
+                <div class=" mid-pop">
+                    <div class="pro-img">
+                        <img src="~/Content/images/product/@item.ProductPictures" class="img-responsive" alt="">
+                        <div class="zoom-icon ">
+                            <a class="picture" href="@Url.Action("Detail", new {id = item.CateID})" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                            <a href="@Url.Action("Index","Single", new {ID =item.ID })"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+                        </div>
+                    </div>
+                    <div class="mid-1">
+                        <div class="women">
+                            <div class="women-top">
+                                <span>@item.Cate</span>
+                                <h6><a href="@Url.Action("Detail", new {id = item.CateID})">@item.ProductName</a></h6>
+                            </div>
+                            <div class="img item_add">
+                                <a href="#"><img src="~/Content/Images/ca.png" alt=""></a>
+                            </div>s
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="mid-2">
+                            <p><label>@item.Discount</label><em class="item_price">@item.Price</em></p>
+                            <div class="block">
+                                <div class="starbox small ghosting"> </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="clearfix"></div>
+    </div>
+</div>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+

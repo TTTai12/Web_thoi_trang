@@ -1,0 +1,56 @@
+﻿@{
+    DoAn.Models.BanHang_DB db = new DoAn.Models.BanHang_DB();
+    var listCate = db.Categories.ToList();
+}
+<div class="col-md-3 product-bottom">
+    <!--categories-->
+    <div class=" rsidebar span_1_of_left">
+        <h4 class="cate">Categories</h4>
+        <ul class="menu-drop">
+
+            <h4 class="cate">Nam</h4>
+            
+                @foreach (var item in listCate)
+                { 
+                        <ul class="cute">
+                            <li class="subitem1"><a href="@Url.Action("Index","ProductCategory", new {CategoryID = item.ID,Sex="Nam"})">@item.Cate </a></li>
+                        </ul>
+                }
+                
+                <h4 class="cate">Nữ</h4>
+                <ul class="menu-drop">
+                    @foreach (var item in listCate)
+                    {
+                            <ul class="cute">
+                                <li class="subitem1"><a href="@Url.Action("Index","ProductCategory", new {CategoryID = item.ID,Sex="Nữ"})">@item.Cate </a></li>
+
+                            </ul>
+                    }
+                    
+
+                </ul>
+</div>
+    <!--initiate accordion-->
+    <script type="text/javascript">
+        $(function () {
+            var menu_ul = $('.menu-drop > li > ul'),
+                menu_a = $('.menu-drop > li > a');
+            menu_ul.hide();
+            menu_a.click(function (e) {
+                e.preventDefault();
+                if (!$(this).hasClass('active')) {
+                    menu_a.removeClass('active');
+                    menu_ul.filter(':visible').slideUp('normal');
+                    $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                } else {
+                    $(this).removeClass('active');
+                    $(this).next().stop(true, true).slideUp('normal');
+                }
+            });
+
+        });
+    </script>
+
+
+</div>
+
